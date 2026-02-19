@@ -9,7 +9,7 @@ Install the package in editable mode with dependencies:
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/ReMEM.git
+git clone https://github.com/intuit-ai-research/ReMem.git
 cd ReMEM
 
 # Install in editable mode
