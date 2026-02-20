@@ -28,4 +28,4 @@ Open a GitHub issue with a clear description of the problem, steps to reproduce,
 
 ## License
 
-By contributing, you agree that your contributions will be licensed under the MIT License.
+By contributing, you agree that your contributions will be licensed under the Apache 2.0 License.
