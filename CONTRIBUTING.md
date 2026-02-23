@@ -4,7 +4,7 @@ Thanks for your interest in contributing.
 
 ## How to contribute
 
-1. Fork the repo and create a branch from `master`.
+1. Fork the repo and create a branch from `main`.
 2. Make your changes.
 3. Test that your changes work (run existing benchmarks if applicable).
 4. Submit a pull request.
