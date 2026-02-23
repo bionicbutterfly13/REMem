@@ -1,5 +1,8 @@
 # ReMEM
 
+## What is ReMEM?
+
+ReMEM (**Re**asoning with **E**pisodic **Mem**ory) is a retrieval-augmented generation system that organizes documents into a hybrid memory graph of entities, facts, and episodic gist traces. It combines dense retrieval with graph-based exploration to answer complex, multi-hop, and temporal questions over long-form text. See our [ICLR 2026 paper](https://www.arxiv.org/pdf/2602.13530) for details.
 
 ## Setup
 
