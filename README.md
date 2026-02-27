@@ -1,8 +1,8 @@
-# ReMEM
+# REMem
 
-## What is ReMEM?
+## What is REMem?
 
-ReMEM (**Re**asoning with **E**pisodic **Mem**ory) is a retrieval-augmented generation system that organizes documents into a hybrid memory graph of entities, facts, and episodic gist traces. It combines dense retrieval with graph-based exploration to answer complex, multi-hop, and temporal questions over long-form text. See our [ICLR 2026 paper](https://www.arxiv.org/pdf/2602.13530) for details.
+REMem (**Re**asoning with **E**pisodic **Mem**ory) is a retrieval-augmented generation system that organizes documents into a hybrid memory graph of entities, facts, and episodic gist traces. It combines dense retrieval with graph-based exploration to answer complex, multi-hop, and temporal questions over long-form text. See our [ICLR 2026 paper](https://www.arxiv.org/pdf/2602.13530) for details.
 
 ## Setup
 
@@ -12,8 +12,8 @@ Install the package in editable mode with dependencies:
 
 ```bash
 # Clone the repository
-git clone https://github.com/intuit-ai-research/ReMem.git
-cd ReMEM
+git clone https://github.com/intuit-ai-research/REMem.git
+cd REMem
 
 # Install in editable mode
 pip install -e .
@@ -151,7 +151,7 @@ reproduce/                  # datasets and reproducibility
 
 ## Citation
 
-If you use ReMEM in your research, please cite our paper:
+If you use REMem in your research, please cite our paper:
 
 ```bibtex
 @inproceedings{shu2026remem,
