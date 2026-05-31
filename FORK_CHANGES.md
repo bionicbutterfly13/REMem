@@ -7,9 +7,16 @@ Licensed under Apache License 2.0; see `LICENSE`.
 Modifications from upstream (per Apache 2.0 §4(b), stating significant changes):
 
 ## macOS / non-GPU support
-- `pyproject.toml`: removed the `vllm==0.8.5post1` pin (CUDA/Linux-only, no macOS build)
-  and unpinned `torch` (the pinned `2.6.0` has no Intel-Mac wheel; pip now resolves to a
-  platform-compatible torch such as 2.2.2). This lets `pip install -e .` succeed on macOS.
+- `pyproject.toml` and `requirements.txt`: removed the `vllm==0.8.5post1` pin
+  (CUDA/Linux-only, no macOS build) and unpinned `torch` (the pinned `2.6.0` has no
+  Intel-Mac wheel; pip now resolves to a platform-compatible torch such as 2.2.2).
+  Both files are updated so installs via `pyproject.toml` *or* `setup.py` succeed on macOS.
+
+## Dataset path resolution
+- `main.py`: datasets ship in two layouts — flat (`reproduce/dataset/<name>_corpus.json`)
+  and nested (`reproduce/dataset/<name>/<name>_corpus.json`). The original code only
+  resolved the flat layout, so `--dataset musique` (and other nested datasets) failed with
+  `FileNotFoundError`. Added `_resolve_dataset_path` to prefer whichever layout exists.
 
 These changes only affect installation. The vLLM offline code paths
 (`*_vllm_offline.py`) are unchanged and remain available where a compatible
