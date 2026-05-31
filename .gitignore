@@ -178,3 +178,4 @@ poetry.lock
 
 # Experiment outputs
 *_out*.txt
+.serena/
