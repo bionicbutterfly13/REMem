@@ -215,7 +215,13 @@ class CacheOpenAI(BaseLLM):
         params["messages"] = messages
         logger.debug(f"Calling OpenAI GPT API with:\n{params}")
 
-        if params.get("model").startswith("Qwen/Qwen3-"):
+        # Reasoning models (gpt-5*, o1/o3/o4*) only accept the default temperature (1).
+        # Sending temperature=0 returns a 400 error, so drop the param for those models.
+        model_name = params.get("model") or ""
+        if model_name.startswith(("gpt-5", "o1", "o3", "o4")) and params.get("temperature", 1) != 1:
+            params.pop("temperature", None)
+
+        if model_name.startswith("Qwen/Qwen3-"):
             if "extra_body" not in params:
                 params["extra_body"] = {}
             if "chat_template_kwargs" not in params["extra_body"]:
