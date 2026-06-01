@@ -138,7 +138,14 @@ def main():
     llm_label = args.llm_name.replace("/", "_")
     embedding_label = args.embedding_name.replace("/", "_")
 
-    corpus_path = f"reproduce/dataset/{dataset_name}_corpus.json"
+    def _resolve_dataset_path(name: str, suffix: str) -> str:
+        # Datasets ship in two layouts: flat (reproduce/dataset/<name><suffix>.json)
+        # and nested (reproduce/dataset/<name>/<name><suffix>.json). Prefer whichever exists.
+        flat = f"reproduce/dataset/{name}{suffix}.json"
+        nested = f"reproduce/dataset/{name}/{name}{suffix}.json"
+        return nested if (not os.path.exists(flat) and os.path.exists(nested)) else flat
+
+    corpus_path = _resolve_dataset_path(dataset_name, "_corpus")
     with open(corpus_path, "r") as f:
         corpus = json.load(f)
 
@@ -148,7 +155,7 @@ def main():
     force_openie_from_scratch = string_to_bool(args.force_openie_from_scratch)
 
     # Prepare datasets and evaluation
-    samples = json.load(open(f"reproduce/dataset/{dataset_name}.json", "r"))
+    samples = json.load(open(_resolve_dataset_path(dataset_name, ""), "r"))
     all_queries = [s["question"] for s in samples]
 
     gold_docs = get_gold_docs(samples, dataset_name)
