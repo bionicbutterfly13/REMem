@@ -84,8 +84,10 @@ def cache_response(func):
             result = func(self, *args, **kwargs)
             response, metadata = result
         except Exception as e:
+            # Do not convert inference failures into an empty response. Downstream
+            # extraction treats "" as valid input and can build a corrupt empty index.
             logger.error(f"Error during LLM inference: {e}")
-            return "", {"error": e}, False
+            raise
 
         # insert new result into cache
         try:
@@ -225,7 +227,10 @@ class CacheOpenAI(BaseLLM):
             response = self.openai_client.chat.completions.create(**params)
             response_message = response.choices[0].message.content
         except Exception as e:
+            # Preserve the real API error instead of falling through to a later
+            # NameError from undefined response variables.
             logger.error(f"LLM API call failed: {e}")
+            raise
 
         metadata = {
             "prompt": messages,
