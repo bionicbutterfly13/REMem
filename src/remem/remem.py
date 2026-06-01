@@ -223,8 +223,8 @@ class ReMem:
     @property
     def embedding_model(self) -> BaseEmbeddingModel:
         if self._embedding_model is None:
-            self._embedding_model = _get_embedding_client(embedding_model_name=self.global_config.embedding_model_name)(
-                global_config=self.global_config, embedding_model_name=self.global_config.embedding_model_name
+            self._embedding_model = _get_embedding_client(
+                self.global_config, embedding_model_name=self.global_config.embedding_model_name
             )
         return self._embedding_model
 
