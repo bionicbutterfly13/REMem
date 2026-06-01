@@ -24,7 +24,7 @@ def longmemeval_data_collect(args):
         rerank_dspy_file_path=None,
         retrieval_top_k=200,
         linking_top_k=5,
-        max_qa_steps=3,
+        agent_max_steps=3,
         qa_top_k=5,
         do_eval_retrieval=True,
         do_eval_qa=True,
