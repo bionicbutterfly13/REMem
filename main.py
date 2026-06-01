@@ -174,7 +174,7 @@ def main():
         rerank_dspy_file_path="src/remem/prompts/dspy_prompts/filter_llama3.3-70B-Instruct.json",
         retrieval_top_k=200,
         linking_top_k=5,
-        max_qa_steps=3,
+        agent_max_steps=3,
         qa_top_k=5,
         do_eval_retrieval=string_to_bool(args.eval_retrieval),
         do_eval_qa=string_to_bool(args.eval_qa),
