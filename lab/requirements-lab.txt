@@ -1,0 +1,7 @@
+# Lab-only dependency for the REMem interactive playground (lab/app.py).
+# Install into the SAME environment as the editable `remem` package:
+#   pip install -r lab/requirements-lab.txt
+#
+# Deliberately kept separate from the upstream pyproject.toml / requirements.txt:
+# Streamlit is a demo concern and must never land in an upstream contribution.
+streamlit>=1.30
