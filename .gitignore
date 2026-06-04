@@ -178,3 +178,7 @@ poetry.lock
 
 # Experiment outputs
 *_out*.txt
+
+# Local editor/tool cruft
+.DS_Store
+.serena/
